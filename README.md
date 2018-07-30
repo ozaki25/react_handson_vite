@@ -1,4 +1,4 @@
-# React Handson Text
+# React Handson
 
 ## development
 
