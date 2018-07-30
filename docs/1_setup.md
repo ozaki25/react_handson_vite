@@ -22,11 +22,11 @@ cd react-handson
 - ブラウザが勝手に開いて以下の画面が表示されればOK
     - `http://localhost:3000/`で稼働する
 
-![template](/images/1/template.png)
+![template](/react_handson/images/1/template.png)
 
 - ホットリロードの確認
     - `src/App.js`を開き`Welcome to React`の文言を適当に書き換えて保存する
     - 自動でリロードが走りコンソールにログが流れる
     - ブラウザが勝手にリリードされ変更が反映される
 
-![hotreload](/images/1/hotreload.gif)
+![hotreload](/react_handson/images/1/hotreload.gif)
