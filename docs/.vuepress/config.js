@@ -8,6 +8,7 @@ module.exports = {
       '/3_hello',
       '/4_counter',
       '/5_todolist',
+      '/6_routing',
     ],
   },
 };
