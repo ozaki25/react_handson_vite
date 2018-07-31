@@ -9,6 +9,7 @@ module.exports = {
       '/4_counter',
       '/5_todolist',
       '/6_routing',
+      '/7_free',
     ],
   },
 };
