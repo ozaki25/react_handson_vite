@@ -5,11 +5,8 @@
 - `create-react-app`という公式のジェネレータを使う
 
 ```bash
-// create-react-appのインストール
-npm i -g create-react-app
-
 // 雛形の生成
-create-react-app react-handson
+npx create-react-app react-handson
 
 // 生成したプロジェクトへ移動
 cd react-handson
