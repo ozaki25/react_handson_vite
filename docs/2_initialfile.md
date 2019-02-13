@@ -27,7 +27,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ```jsx
 import React from 'react';
 
-const App = () => <h1>Hello World</h1>;
+function App () {
+  return <h1>Hello World</h1>;
+}
 
 export default App;
 ```
@@ -104,7 +106,9 @@ export default App;
 ```jsx
 import React from 'react';
 
-const App = () => <h1>Hello World</h1>;
+function App () {
+  return <h1>Hello World</h1>;
+}
 
 export default App;
 ```
@@ -112,13 +116,6 @@ export default App;
 - `App.js`の正体は`<h1>Hello World</h1>`というhtmlタグを返す関数である
 
 > ### メモ
-> - `const App = () => <h1>Hello World</h1>`はJavaScriptの関数(メソッド)の省略記法
-> - 省略せずに書くと以下のようになる
->   ```jsx
->   const App = () => {
->     return <h1>Hello World</h1>;
->   }
->   ```
 > - Javaでいう以下のメソッドと同じようなイメージ(厳密にはだいぶ違うけど)
 >   ```java
 >   public static String App() {
@@ -127,7 +124,7 @@ export default App;
 >   ```
 >
 >
-> - `export default App;`のようにexportしないと、他のファイルから`import`できない
+> - JavaScriptは`export default App;`といった風にexportしないと、他のファイルから`import`できない
 
 ### index.js
 
