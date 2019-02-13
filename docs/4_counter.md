@@ -4,7 +4,7 @@
 
 ## ゴール
 
-- Stateの使い方を覚える
+- `useState`を使った状態管理を覚える
 - クリックを検知して処理を実行できるようになる
 
 ## 完成形
@@ -13,45 +13,41 @@
 
 ## やること
 
-- Classを使ったコンポーネントを作る
+- 見た目だけ作る
 - ボタンクリックで処理を実行させる
-- Stateで値を管理する
+- `useState`で値を管理する
 
-## Classを使ったコンポーネントを作る
-
-- HelloWorld編ではコンポーネントは全て関数で作っていた
-- Counter編ではStateを扱うためにClassでコンポーネントを定義する
+## 見た目だけ作る
 
 ### Counterコンポーネントを作る
 
 - 現在のカウンターの値とプラス/マイナスボタンを表示する
-- Classでコンポーネントを作る場合は`React.Component`を継承させる
 
 ```jsx
 import React from 'react';
 
-class Counter extends React.Component {
-  render() {
-    return (
-      <div>
-        <div>0</div>
-        <button>ー</button>
-        <button>＋</button>
-      </div>
-    );
-  }
+function Counter() {
+  return (
+    <div>
+      <div>0</div>
+      <button>ー</button>
+      <button>＋</button>
+    </div>
+  )
 }
 
 export default Counter;
 ```
 
-- Counterコンポーネントを使うように`App.js`を修正
+- Counterコンポーネントを表示するように`App.js`を修正
 
 ```jsx
 import React from 'react';
 import Counter from './components/Counter'; // importを追加
 
-const App = () => <Counter />; // Counterコンポーネントを使う
+function App() {
+  return <Counter />; // Counterコンポーネントを使う
+}
 
 export default App;
 ```
@@ -73,17 +69,15 @@ const styles = {
   }
 };
 
-class Counter extends React.Component {
-  render() {
-    return (
-      // style属性を追加
-      <div style={styles.counter}> 
-        <div style={styles.count}>0</div>
-        <button>ー</button>
-        <button>＋</button>
-      </div>
-    );
-  }
+function Counter() {
+  return (
+    // style属性を追加
+    <div style={styles.counter}> 
+      <div style={styles.count}>0</div>
+      <button>ー</button>
+      <button>＋</button>
+    </div>
+  );
 }
 
 export default Counter;
@@ -103,117 +97,117 @@ export default Counter;
 - プラス/マイナスボタンを押した時に処理を実行できるようにする
 
 ```jsx
-class Counter extends React.Component {
+// 省略
+
+function Counter() {
   // ーを押した時の処理を追加
-  down = () => {
+  const down = function() {
     alert('down');
-  }
+  };
 
   // ＋を押した時の処理を追加
-  up = () => {
+  const up = function() {
     alert('up');
   };
 
-  render() {
-    return (
-      <div style={styles.counter}> 
-        <div style={styles.count}>0</div> 
-        {/* onClick属性を追加 */}
-        <button onClick={this.down}>ー</button>
-        <button onClick={this.up}>＋</button>
-      </div>
-    );
-  }
+  return (
+    <div style={styles.counter}>
+      <div style={styles.count}>0</div>
+      {/* onClick属性を追加 */}
+      <button onClick={down}>ー</button>
+      <button onClick={up}>＋</button>
+    </div>
+  );
 }
 ```
 
 - onClick属性を使うことでクリック時の挙動を制御できる
-- クリック時に同じクラス内のメソッドを実行するときは`this.down`のような形式で呼び出す
 - このコードを実行すると、`ー`ボタンをクリックするとdownメソッドが呼ばれアラートに`down`と表示される
 
 > ### メモ
 > - ボタンをクリックして出てくるポップアップは`alert()`の実行によって表示されている
 > - 今回のように開発途中で、メソッドが呼ばれていることだけ確認したいような時に使うと便利
 
-## Stateで値を管理する
+## `useState`で値を管理する
 
 - 最後に、ボタンをクリックした時にカウンターの値を増減できるようにする
 - 今はカウンターの値が埋め込みになっているので、この値を管理できるようにする
 
-### Stateを定義する
+### `useState`でcountを定義する
 
-- Reactコンポーネントのclassは`state`として値を保持することができる
-- `count`というカウンターの値を表す`state`を追加する
+- Reactコンポーネントは`useState`を使うことで値を管理できるようになる
+- `count`というカウンターの値を表す変数を持つようにする
 
 ```jsx
-class Counter extends React.Component {
-  // constructorを追加
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 }; // stateの初期値をセットする
-  }
+// 省略
 
-  down = () => {
+function Counter() {
+  // useStateの引数としてデフォルト値をセットすることができる
+  const [count, setCount] = React.useState(0)
+
+  // ーを押した時の処理を追加
+  const down = function() {
     alert('down');
-  }
+  };
 
-  up = () => {
+  // ＋を押した時の処理を追加
+  const up = function() {
     alert('up');
   };
 
-  render() {
-    return (
-      <div style={styles.counter}> 
-        {/* stateが保持しているcountの値を表示する */}
-        <div style={styles.count}>{this.state.count}</div> 
-        <button onClick={this.down}>ー</button>
-        <button onClick={this.up}>＋</button>
-      </div>
-    );
-  }
+  return (
+    <div style={styles.counter}>
+      {/* 変数countを使うように変更 */}
+      <div style={styles.count}>{count}</div>
+      <button onClick={down}>ー</button>
+      <button onClick={up}>＋</button>
+    </div>
+  );
 }
 ```
 
 > ### メモ
-> - JavaScriptでは`{ count: 0 }`のようなものをオブジェクトと呼ぶ
-> - コロンの左辺がkey(名前)で右辺がvalue(値)
+>  - React.useStateの戻り値は配列で受け取る
+>    - `const [count, setCount]`
+>  - 第一要素は値が格納されるstate
+>  - 第二要素の`setCount`を使うことで`count`の値を更新することができる
+>  - `setCount`によってstateを更新すると自動で再レンダリングされて表示内容が更新される
 
-### Stateを更新する
+### stateを更新する
 
-- `State`は`setState`メソッドを使って値を更新する
+- `count`は`setCount`を使って更新する
 
 ```jsx
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
+// 省略
 
-  down = () => {
+function Counter() {
+  const [count, setCount] = React.useState(0)
+
+  // ーを押した時の処理を追加
+  const down = function() {
     // countの値を更新する処理を追加
-    this.setState({ count: this.state.count - 1 });
+    setCount(count - 1);
   };
 
-  up = () => {
+  // ＋を押した時の処理を追加
+  const up = function() {
     // countの値を更新する処理を追加
-    this.setState({ count: this.state.count + 1 });
+    setCount(count + 1);
   };
 
-  render() {
-    return (
-      <div style={styles.counter}>
-        <div style={styles.count}>{this.state.count}</div>
-        <button onClick={this.down}>ー</button>
-        <button onClick={this.up}>＋</button>
-      </div>
-    );
-  }
+  return (
+    <div style={styles.counter}>
+      <div style={styles.count}>{count}</div>
+      <button onClick={down}>ー</button>
+      <button onClick={up}>＋</button>
+    </div>
+  );
 }
 ```
 
-- **Stateを更新するとrenderメソッドが勝手に呼ばれて、画面が再描画される**
+- **stateを更新するとrenderメソッドが勝手に呼ばれて、画面が再描画される**
 - 処理の流れとしては
-    - ＋ボタンクリック -> upメソッド -> setStateメソッド -> (Stateが更新される) -> renderメソッド -> 画面再描画
+    - ＋ボタンクリック -> upメソッド -> setCountメソッド -> (stateが更新される) -> renderメソッド -> 画面再描画
 - ここまでで完成形と同じものが完成
 
 ![counter](/react_handson/images/4/counter.gif)
@@ -246,34 +240,29 @@ const styles = {
   }
 };
 
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
+function Counter() {
+  const [count, setCount] = React.useState(0);
 
-  down = () => {
-    this.setState({ count: this.state.count - 1 });
+  const down = function() {
+    setCount(count - 1);
   };
 
-  up = () => {
-    this.setState({ count: this.state.count + 1 });
+  const up = function() {
+    setCount(count + 1);
   };
 
-  power = () => {
-    this.setState({ count: this.state.count ** 2 });
+  const power = function() {
+    setCount(count ** 2 );
   };
 
-  render() {
-    return (
-      <div style={styles.counter}>
-        <div style={styles.count}>{this.state.count}</div>
-        <button onClick={this.down}>ー</button>
-        <button onClick={this.up}>＋</button>
-        <button onClick={this.power}>＊＊</button>
-      </div>
-    );
-  }
+  return (
+    <div style={styles.counter}>
+      <div style={styles.count}>{count}</div>
+      <button onClick={down}>ー</button>
+      <button onClick={up}>＋</button>
+      <button onClick={power}>＊＊</button>
+    </div>
+  );
 }
 
 export default Counter;

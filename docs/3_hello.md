@@ -28,7 +28,7 @@
 ```jsx
 import React from 'react';
 
-function Hello () {
+function Hello() {
   return (
     <div>
       <h1>Hello World</h1>
@@ -52,7 +52,7 @@ export default Hello;
 import React from 'react';
 import Hello from './components/Hello'; // Helloコンポーネントをimportする
 
-function App () {
+function App() {
   return <Hello />; // importしたHelloコンポーネントを返すように変更する
 }
 
@@ -75,7 +75,7 @@ export default App;
 ```jsx
 import React from 'react';
 
-function Greet ({ name }) {
+function Greet({ name }) {
   return <p>Hello {name}さん！</p>; // {}で囲うと変数を埋め込むことができる
 }
 
@@ -91,7 +91,7 @@ import React from 'react';
 import Hello from './components/Hello';
 import Greet from './components/Greet'; // importを追加
 
-function App () {
+function App() {
   return (
     <div>
       <Hello />
@@ -109,7 +109,7 @@ export default App;
 - 引数は属性に値を設定することで渡すことができる
     - `<Greet name="Ozaki" />`
 - 属性で渡された値は関数の宣言時に受け取ることができる
-    - `function Greet ({ name }) {`
+    - `function Greet({ name }) {`
 - 引数を渡す時の属性名と、受け取る時の変数名は同一でないといけないので注意
     - `{}`内の値は、渡した順序ではなく名前で紐づけされている
 - 以下のような画面が表示されていれば完成
@@ -137,7 +137,7 @@ import React from 'react';
 import Hello from './components/Hello';
 import Greet from './components/Greet';
 
-function App () {
+function App() {
   return (
     <div>
       <Hello />
@@ -156,7 +156,7 @@ export default App;
 ```jsx
 import React from 'react';
 
-function Greet ({ firstName, lastName }) {
+function Greet({ firstName, lastName }) {
   return <p>Hello {firstName} {lastName}さん！</p>;
 }
 
