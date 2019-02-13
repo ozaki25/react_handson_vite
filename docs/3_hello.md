@@ -28,12 +28,14 @@
 ```jsx
 import React from 'react';
 
-const Hello = () => (
-  <div>
-    <h1>Hello World</h1>
-    <p>Hello World</p>
-  </div>
-);
+function Hello () {
+  return (
+    <div>
+      <h1>Hello World</h1>
+      <p>Hello World</p>
+    </div>
+  );
+}
 
 export default Hello;
 ```
@@ -50,7 +52,9 @@ export default Hello;
 import React from 'react';
 import Hello from './components/Hello'; // Helloコンポーネントをimportする
 
-const App = () => <Hello />; // importしたHelloコンポーネントを返すように変更する
+function App () {
+  return <Hello />; // importしたHelloコンポーネントを返すように変更する
+}
 
 export default App;
 ```
@@ -71,10 +75,9 @@ export default App;
 ```jsx
 import React from 'react';
 
-const Greet = ({ name }) => (
-  // {}で囲うと変数を埋め込むことができる
-  <p>Hello {name}さん！</p>
-);
+function Greet ({ name }) {
+  return <p>Hello {name}さん！</p>; // {}で囲うと変数を埋め込むことができる
+}
 
 export default Greet;
 ```
@@ -88,13 +91,15 @@ import React from 'react';
 import Hello from './components/Hello';
 import Greet from './components/Greet'; // importを追加
 
-const App = () => (
-  <div>
-    <Hello />
-    {/* 引数は属性として渡す */}
-    <Greet name="Ozaki" />
-  </div>
-);
+function App () {
+  return (
+    <div>
+      <Hello />
+      {/* 引数は属性として渡す */}
+      <Greet name="Ozaki" />
+    </div>
+  );
+}
 
 export default App;
 ```
@@ -104,7 +109,7 @@ export default App;
 - 引数は属性に値を設定することで渡すことができる
     - `<Greet name="Ozaki" />`
 - 属性で渡された値は関数の宣言時に受け取ることができる
-    - `const Greet = ({ name }) => (`
+    - `function Greet ({ name }) {`
 - 引数を渡す時の属性名と、受け取る時の変数名は同一でないといけないので注意
     - `{}`内の値は、渡した順序ではなく名前で紐づけされている
 - 以下のような画面が表示されていれば完成
@@ -132,14 +137,16 @@ import React from 'react';
 import Hello from './components/Hello';
 import Greet from './components/Greet';
 
-const App = () => (
-  <div>
-    <Hello />
-    <Greet firstName="Haruki" lastName="Nishikawa" />
-    <Greet firstName="Takuya" lastName="Nakashima" />
-    <Greet firstName="Taishi" lastName="Ohta" />
-  </div>
-);
+function App () {
+  return (
+    <div>
+      <Hello />
+      <Greet firstName="Haruki" lastName="Nishikawa" />
+      <Greet firstName="Takuya" lastName="Nakashima" />
+      <Greet firstName="Taishi" lastName="Ohta" />
+    </div>
+  );
+}
 
 export default App;
 ```
@@ -149,11 +156,9 @@ export default App;
 ```jsx
 import React from 'react';
 
-const Greet = ({ firstName, lastName }) => (
-  <p>
-    Hello {firstName} {lastName}さん！
-  </p>
-);
+function Greet ({ firstName, lastName }) {
+  return <p>Hello {firstName} {lastName}さん！</p>;
+}
 
 export default Greet;
 ```
