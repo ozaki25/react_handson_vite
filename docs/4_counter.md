@@ -142,15 +142,13 @@ function Counter() {
 // 省略
 
 function Counter() {
-  // useStateの引数としてデフォルト値をセットすることができる
+  // countというstateを定義する(詳細は後述)
   const [count, setCount] = React.useState(0)
 
-  // ーを押した時の処理を追加
   const down = function() {
     alert('down');
   };
 
-  // ＋を押した時の処理を追加
   const up = function() {
     alert('up');
   };
@@ -166,13 +164,6 @@ function Counter() {
 }
 ```
 
-> ### メモ
->  - React.useStateの戻り値は配列で受け取る
->    - `const [count, setCount]`
->  - 第一要素は値が格納されるstate
->  - 第二要素の`setCount`を使うことで`count`の値を更新することができる
->  - `setCount`によってstateを更新すると自動で再レンダリングされて表示内容が更新される
-
 ### stateを更新する
 
 - `count`は`setCount`を使って更新する
@@ -183,13 +174,11 @@ function Counter() {
 function Counter() {
   const [count, setCount] = React.useState(0)
 
-  // ーを押した時の処理を追加
   const down = function() {
     // countの値を更新する処理を追加
     setCount(count - 1);
   };
 
-  // ＋を押した時の処理を追加
   const up = function() {
     // countの値を更新する処理を追加
     setCount(count + 1);
@@ -205,9 +194,9 @@ function Counter() {
 }
 ```
 
-- **stateを更新するとrenderメソッドが勝手に呼ばれて、画面が再描画される**
-- 処理の流れとしては
-    - ＋ボタンクリック -> upメソッド -> setCountメソッド -> (stateが更新される) -> renderメソッド -> 画面再描画
+- `const [count, setCount] = React.useState(0)`の動き
+
+
 - ここまでで完成形と同じものが完成
 
 ![counter](/react_handson/images/4/counter.gif)
