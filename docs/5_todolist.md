@@ -26,14 +26,12 @@
 ```jsx
 import React from 'react';
 
-class TodoList extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>TodoList</h1>
-      </div>
-    );
-  }
+function TodoList() {
+  return (
+    <div>
+      <h1>TodoList</h1>
+    </div>
+  );
 }
 
 export default TodoList;
@@ -45,7 +43,9 @@ export default TodoList;
 import React from 'react';
 import TodoList from './components/TodoList'; // importを追加
 
-const App = () => <TodoList />; // TodoListコンポーネントを使用
+function App() {
+  return <TodoList />; // TodoListコンポーネントを使用
+}
 
 export default App;
 ```
@@ -66,21 +66,14 @@ const defaultTodo = [
   { id: 3, title: 'TodoListを作る', done: false }
 ];
 
-class TodoList extends React.Component {
-  // constructorを追加
-  constructor(props) {
-    super(props);
-    this.state = { todoList: defaultTodo }; // Stateの初期値を設定
-  }
-
-  render() {
-    console.log(this.state.todoList); // Stateの値を確認する処理を追加
-    return (
-      <div>
-        <h1>TodoList</h1>
-      </div>
-    );
-  }
+function TodoList() {
+  const [todoList, setTodoList] = React.useState(defaultTodo)
+  console.log(todoList); // stateの値を確認する処理を追加
+  return (
+    <div>
+      <h1>TodoList</h1>
+    </div>
+  );
 }
 ```
 
@@ -96,25 +89,20 @@ class TodoList extends React.Component {
 
 ### TodoListを画面に表示する
 
-- Stateで保持しているTodoListを画面に表示する
+- stateで保持しているTodoListを画面に表示する
 - `map`を使うことで配列に対して繰り返し処理を行っている
 
 ```jsx
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { todoList: defaultTodo };
-  }
+function TodoList() {
+  const [todoList, setTodoList] = React.useState(defaultTodo)
 
-  render() {
-    return (
-      <div>
-        <h1>TodoList</h1>
-        {/* TodoListの各Todoに対してPタグを生成する処理を追加 */}
-        {this.state.todoList.map(todo => <p key={todo.id}>{todo.title}</p>)}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>TodoList</h1>
+      {/* TodoListの各Todoに対してPタグを生成する処理を追加 */}
+      {todoList.map(todo => <p key={todo.id}>{todo.title}</p>)}
+    </div>
+  );
 }
 ```
 
@@ -144,17 +132,14 @@ const styles = {
   }
 };
 
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { todoList: defaultTodo };
-  }
+function TodoList() {
+  const [todoList, setTodoList] = React.useState(defaultTodo)
 
   render() {
     return (
       <div>
         <h1>TodoList</h1>
-        {this.state.todoList.map(todo => (
+        {todoList.map(todo => (
           // style属性を追加
           // doneがtrueならstyleを適用、falseなら何も適用しない
           <p key={todo.id} style={todo.done ? styles.done : null}>
@@ -182,35 +167,30 @@ class TodoList extends React.Component {
 - `toggleComplete`メソッドを追加しクリックした際に呼び出されるようにする
 
 ```jsx
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { todoList: defaultTodo };
-  }
+function TodoList() {
+  const [todoList, setTodoList] = React.useState(defaultTodo)
 
   // toggleCompleteメソッドを追加
-  toggleComplete = e => {
+  const toggleComplete = e => {
     alert(e.target.id); // e.target.idでクリックされた要素のid属性を取得できる
   };
 
-  render() {
-    return (
-      <div>
-        <h1>TodoList</h1>
-        {this.state.todoList.map(todo => (
-          // id属性とonClick属性を追加
-          <p
-            key={todo.id}
-            style={todo.done ? styles.done : null}
-            id={todo.id}
-            onClick={this.toggleComplete}
-          >
-            {todo.title}
-          </p>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>TodoList</h1>
+      {todoList.map(todo => (
+        // id属性とonClick属性を追加
+        <p
+          key={todo.id}
+          style={todo.done ? styles.done : null}
+          id={todo.id}
+          onClick={toggleComplete}
+        >
+          {todo.title}
+        </p>
+      ))}
+    </div>
+  );
 }
 ```
 
@@ -221,18 +201,15 @@ class TodoList extends React.Component {
 - クリックしたTodoのdoneの値を更新する
 
 ```jsx
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { todoList: defaultTodo };
-  }
+function TodoList() {
+  const [todoList, setTodoList] = React.useState(defaultTodo)
 
-  toggleComplete = e => {
+  const toggleComplete = e => {
     // 属性の値は全て文字列で返却されるので数値型に変換する
     const id = Number(e.target.id);
 
     // Stateに保持しているtodoListに対してループ処理
-    const todoList = this.state.todoList.map(todo => {
+    const todoList = todoList.map(todo => {
       // クリックされたtodoとidが一致したらdoneのtrue/falseを反転させる
       if (todo.id === id) todo.done = !todo.done;
       return todo;
@@ -240,26 +217,24 @@ class TodoList extends React.Component {
 
     // doneを更新したtodoを含むtodoListでStateを更新する
     // this.setState({ todoList: todoList }) の省略形
-    this.setState({ todoList });
+    setTodoList(todoList);
   };
 
-  render() {
-    return (
-      <div>
-        <h1>TodoList</h1>
-        {this.state.todoList.map(todo => (
-          <p
-            key={todo.id}
-            style={todo.done ? styles.done : null}
-            id={todo.id}
-            onClick={this.toggleComplete}
-          >
-            {todo.title}
-          </p>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>TodoList</h1>
+      {todoList.map(todo => (
+        <p
+          key={todo.id}
+          style={todo.done ? styles.done : null}
+          id={todo.id}
+          onClick={toggleComplete}
+        >
+          {todo.title}
+        </p>
+      ))}
+    </div>
+  );
 }
 ```
 
@@ -281,28 +256,26 @@ class TodoList extends React.Component {
 - Todoの内容を入力するフォームと追加ボタンを配置する
 
 ```jsx
-  render() {
-    return (
-      <div>
-        <h1>TodoList</h1>
-        {/* 入力域とボタンを追加 */}
-        <p>
-          <input />
-          <button>追加</button>
+  return (
+    <div>
+      <h1>TodoList</h1>
+      {/* 入力域とボタンを追加 */}
+      <p>
+        <input />
+        <button>追加</button>
+      </p>
+      {todoList.map(todo => (
+        <p
+          key={todo.id}
+          style={todo.done ? styles.done : null}
+          id={todo.id}
+          onClick={toggleComplete}
+        >
+          {todo.title}
         </p>
-        {this.state.todoList.map(todo => (
-          <p
-            key={todo.id}
-            style={todo.done ? styles.done : null}
-            id={todo.id}
-            onClick={this.toggleComplete}
-          >
-            {todo.title}
-          </p>
-        ))}
-      </div>
-    );
-  }
+      ))}
+    </div>
+  );
 ```
 
 ![todo4](/react_handson/images/5/todo4.png)
