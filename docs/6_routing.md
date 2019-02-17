@@ -10,7 +10,7 @@
 
 ## やること
 
-- ページにURLを割り当てる
+- 各ページにURLを割り当てる
 - リンクを置いて行き来できるようにする
 
 ## 事前準備
@@ -21,7 +21,7 @@
 npm i react-router-dom
 ```
 
-## ページにURLを割り当てる
+## 各ページにURLを割り当てる
 
 ### routingに関するファイルを作成する
 
@@ -33,15 +33,18 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Hello from './components/Hello';
 
-const Router = () => (
-  <BrowserRouter>
-    <div>
-      <Route path="/" component={Hello} exact />
-    </div>
-  </BrowserRouter>
-);
+function Router() {
+  return (
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={Hello} exact />
+      </div>
+    </BrowserRouter>
+  );
+}
 
 export default Router;
+
 ```
 
 - `Route`タグにURLとコンポーネントのマッピングをする記述
@@ -57,7 +60,9 @@ export default Router;
 import React from 'react';
 import Router from './router'; // importを追加
 
-const App = () => <Router />; // Routerを使うように変更
+function App() {
+  return <Router />; // Routerを使うように変更
+}
 
 export default App;
 ```
@@ -75,16 +80,20 @@ import Hello from './components/Hello';
 import Counter from './components/Counter';
 import TodoList from './components/TodoList';
 
-const Router = () => (
-  <BrowserRouter>
-    <div>
-      <Route path="/" component={Hello} exact />
-      <Route path="/hello" component={Hello} exact />
-      <Route path="/counter" component={Counter} exact />
-      <Route path="/todo-list" component={TodoList} exact />
-    </div>
-  </BrowserRouter>
-);
+function Router() {
+  return (
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={Hello} exact />
+        <Route path="/hello" component={Hello} exact />
+        <Route path="/counter" component={Counter} exact />
+        <Route path="/todo-list" component={TodoList} exact />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default Router;
 ```
 
 - 各コンポーネントに対してコンポーネント名と同じ名前のURLを割り振った
@@ -104,13 +113,15 @@ const Router = () => (
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = () => (
-  <div>
-    <NavLink to="/hello">Hello</NavLink>
-    <NavLink to="/counter">Counter</NavLink>
-    <NavLink to="/todo-list">TodoList</NavLink>
-  </div>
-);
+function Header() {
+  return (
+    <div>
+      <NavLink to="/hello">Hello</NavLink>
+      <NavLink to="/counter">Counter</NavLink>
+      <NavLink to="/todo-list">TodoList</NavLink>
+    </div>
+  );
+}
 
 export default Header;
 ```
@@ -130,17 +141,19 @@ import Counter from './components/Counter';
 import TodoList from './components/TodoList';
 import Header from './components/Header'; // importを追加
 
-const Router = () => (
-  <BrowserRouter>
-    <div>
-      <Header /> {/* Headerコンポーネントを追加 */}
-      <Route path="/" component={Hello} exact />
-      <Route path="/hello" component={Hello} exact />
-      <Route path="/counter" component={Counter} exact />
-      <Route path="/todo-list" component={TodoList} exact />
-    </div>
-  </BrowserRouter>
-);
+function Router() {
+  return (
+    <BrowserRouter>
+      <div>
+        <Header /> {/* Headerコンポーネントを追加 */}
+        <Route path="/" component={Hello} exact />
+        <Route path="/hello" component={Hello} exact />
+        <Route path="/counter" component={Counter} exact />
+        <Route path="/todo-list" component={TodoList} exact />
+      </div>
+    </BrowserRouter>
+  );
+}
 
 export default Router;
 ```
@@ -156,6 +169,9 @@ export default Router;
 - `Header.js`を修正する
 
 ```jsx
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 // styleの定義を追加
 const styles = {
   link: {
@@ -174,25 +190,30 @@ const styles = {
   }
 };
 
-const Header = () => (
-  <div>
-    {/* style属性とactiveStyle属性を追加 */}
-    <NavLink style={styles.link} activeStyle={styles.linkActive} to="/hello">
-      Hello
-    </NavLink>
-    <NavLink style={styles.link} activeStyle={styles.linkActive} to="/counter">
-      Counter
-    </NavLink>
-    <NavLink style={styles.link} activeStyle={styles.linkActive} to="/todo-list">
-      TodoList
-    </NavLink>
-  </div>
-);
+
+function Header() {
+  return (
+    <div>
+      {/* style属性とactiveStyle属性を追加 */}
+      <NavLink style={styles.link} activeStyle={styles.linkActive} to="/hello">
+        Hello
+      </NavLink>
+      <NavLink style={styles.link} activeStyle={styles.linkActive} to="/counter">
+        Counter
+      </NavLink>
+      <NavLink style={styles.link} activeStyle={styles.linkActive} to="/todo-list">
+        TodoList
+      </NavLink>
+    </div>
+  );
+}
+
+export default Header;
 ```
 
 - `NavLink`タグのstyle属性にstyleを指定することで見た目を整えている
 - activeStyle属性に指定されたstyleは、表示されてるページと一致するリンクにだけ適用される
-    - この機能はライブラリ側で用意されているもの
+    - この機能はreact-routerで用意されいる
 
 - これで完成
 
