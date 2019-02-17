@@ -118,7 +118,7 @@ export default App;
 
 ## 課題
 
-- 引数を`name`から`firstName`と`lastName`の２つに変更し、以下の画面を再現してみよう
+- Greetコンポーネントの引数を`name`から`firstName`と`lastName`の２つに変更し、以下の画面を再現してみよう
 
 ![hello3](/react_handson/images/3/hello3.png)
 
