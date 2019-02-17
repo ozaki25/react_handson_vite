@@ -22,7 +22,7 @@
 ### Counterコンポーネントを作る
 
 - 現在のカウンターの値とプラス/マイナスボタンを表示する
-- `src/components`ディレクトリに`Counter.js`という名前で作成する
+- `src/components/Counter.js`を作成する
 
 ```jsx
 import React from 'react';
