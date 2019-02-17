@@ -13,15 +13,16 @@
 
 ## やること
 
-- 見た目だけ作る
+- カウンターのレイアウトを作る
 - ボタンクリックで処理を実行させる
 - `useState`で値を管理する
 
-## 見た目だけ作る
+## カウンターのレイアウトを作る
 
 ### Counterコンポーネントを作る
 
 - 現在のカウンターの値とプラス/マイナスボタンを表示する
+- `src/components`ディレクトリに`Counter.js`という名前で作成する
 
 ```jsx
 import React from 'react';
@@ -85,7 +86,7 @@ export default Counter;
 
 > ### メモ
 > - ReactでCSSを書く方法はいろいろあるが、今回は最も簡易な方法を採用している
-> - JavaScriptのコードに埋め込んでいるため、ケバブケース(text-align)ではなくキャメルケース(textAlign)で記載することに注意
+> - JavaScriptのコードにCSSを埋め込んでいるため、ケバブケース(text-align)ではなくキャメルケース(textAlign)で記載することに注意
 
 - 画像のように中央寄せになっていればOK
 
@@ -102,7 +103,7 @@ export default Counter;
 function Counter() {
   // ーを押した時の処理を追加
   const down = function() {
-    alert('down');
+    alerst('down');
   };
 
   // ＋を押した時の処理を追加
@@ -122,7 +123,7 @@ function Counter() {
 ```
 
 - onClick属性を使うことでクリック時の挙動を制御できる
-- このコードを実行すると、`ー`ボタンをクリックするとdownメソッドが呼ばれアラートに`down`と表示される
+- このコードを実行すると`ー`ボタンをクリックするとdownメソッドが呼ばれアラートに`down`と表示される(＋も同様)
 
 > ### メモ
 > - ボタンをクリックして出てくるポップアップは`alert()`の実行によって表示されている
@@ -131,18 +132,26 @@ function Counter() {
 ## `useState`で値を管理する
 
 - 最後に、ボタンをクリックした時にカウンターの値を増減できるようにする
-- 今はカウンターの値が埋め込みになっているので、この値を管理できるようにする
+- 今はカウンターの値が埋め込みになっているので、この値をコンポーネントで管理するように変更する
 
 ### `useState`でcountを定義する
 
 - Reactコンポーネントは`useState`を使うことで値を管理できるようになる
-- `count`というカウンターの値を表す変数を持つようにする
+
+> ### メモ
+>
+> - 値を管理するとは？
+>    - ユーザ操作等で変化し得る状態を保持することができる
+>    - 管理する値が更新されると自動的に画面が再描画される
+> - コンポーネントが管理する値のことをStateと呼ぶ
+
+- `count`というカウンターの値を表すStateを持つようにする
 
 ```jsx
 // 省略
 
 function Counter() {
-  // countというstateを定義する(詳細は後述)
+  // countというStateを定義する
   const [count, setCount] = React.useState(0)
 
   const down = function() {
@@ -164,7 +173,18 @@ function Counter() {
 }
 ```
 
-### stateを更新する
+- 状態(State)の定義
+    - `const [count, setCount] = React.useState(0)`でStateを定義している
+    - `count`は現在の値
+    - `setCount`は`count`を変更するための関数
+    - `useState`の引数である`0`は`count`の初期値
+
+> ### メモ
+>
+> - 今回は管理する値がcountだったので`count`、`setCount`という変数名をつけた
+> - 変数名は用途に応じて任意の名前をつけることができる
+
+### Stateを更新する
 
 - `count`は`setCount`を使って更新する
 
@@ -194,7 +214,7 @@ function Counter() {
 }
 ```
 
-- `const [count, setCount] = React.useState(0)`の動き
+- `setCount`を使って`count`の値を変更すると、フレームワークの機能により自動的に再描画され画面が更新される
 
 
 - ここまでで完成形と同じものが完成
@@ -209,9 +229,9 @@ function Counter() {
 
 ## まとめ
 
-- コンポーネントをclassで定義するとStateを持つことができる
-- Stateは必ずsetStateを使って更新する
-- Stateが更新されるとrenderメソッドが呼ばれて画面が再描画される
+- `useState`を使うことでコンポーネントでStateを管理することができる
+- `useState`によって生成した`setXxx`メソッドを使うことでStateを更新することができる
+- Stateが更新されると自動的に再描画され画面が更新される
 
 ## 課題の回答例
 
