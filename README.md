@@ -4,7 +4,7 @@
 
 ```
 git clone git@github.com:ozaki25/react_handson.git
-npm i -g vuepress
+npm i -g vuepress@next
 cd react_handson
 yarn start or npm start
 open http://localhost:8080
