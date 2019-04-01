@@ -6,7 +6,7 @@
 
 ## 完成形
 
-![router3](/react_handson/images/6/router3.gif)
+![router3](/api/project/file/react-handson/images/6/router3.gif)
 
 ## やること
 
@@ -99,7 +99,7 @@ export default Router;
 - 各コンポーネントに対してコンポーネント名と同じ名前のURLを割り振った
 - ブラウザにそれぞれのページのURL(`/hello`、`/counter`、`/todo-list`)を直接入力してアクセスできることを確かめる
 
-![router](/react_handson/images/6/router.gif)
+![router](/api/project/file/react-handson/images/6/router.gif)
 
 
 ## リンクを置いて行き来できるようにする
@@ -161,7 +161,7 @@ export default Router;
 - routerにHeaderコンポーネントを追加することで常にリンクが表示されるようになった
 - ここまでで以下のように機能は完成した
 
-![router2](/react_handson/images/6/router2.gif)
+![router2](/api/project/file/react-handson/images/6/router2.gif)
 
 ### styleを整える
 
@@ -217,7 +217,7 @@ export default Header;
 
 - これで完成
 
-![router3](/react_handson/images/6/router3.gif)
+![router3](/api/project/file/react-handson/images/6/router3.gif)
 
 ## まとめ
 

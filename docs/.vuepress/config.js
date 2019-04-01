@@ -1,6 +1,6 @@
 module.exports = {
   title: 'ReactHandson',
-  base: '/react_handson/',
+  base: '/api/project/file/react-handson/',
   themeConfig: {
     sidebar: [
       '/1_setup',
