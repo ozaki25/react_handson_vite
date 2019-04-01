@@ -1,8 +1,14 @@
 # 1.開発環境構築
 
+## コマンドの実行
+
+- EclipseCheを使って開発する場合、コマンドは画面下部の`Terminal`で実行する
+
+![terminal](/react_handson/images/1/terminal.png)
+
 ## 前提
 
-- `node`がコマンドが使えること
+- `node`コマンドが使えること
     - バージョンは8以上が望ましい
     - それ以下は動作未確認
 
@@ -29,6 +35,11 @@ cd react-handson
     - `npm start`
 - ブラウザが勝手に開いて以下の画面が表示されればOK
     - `http://localhost:3000/`で稼働する
+    - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする
+
+![url1](/react_handson/images/1/url1.png)
+![url2](/react_handson/images/1/url2.png)
+
 
 ![template](/react_handson/images/1/template.png)
 
