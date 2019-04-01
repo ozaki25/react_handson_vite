@@ -57,7 +57,7 @@ export default App;
 
 - この状態で`npm start`すると画面に`Hello World`が表示される
 
-![hello](/api/project/file/react-handson/images/2/hello.png)
+![hello](/images/2/hello.png)
 
 ## ファイル一覧
 
@@ -142,7 +142,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
     - ReactDOMのrenderメソッドを呼んでいる
         - App.jsの内容(`<h1>Hello World</h1>`)をid属性がrootの要素(index.htmlにあるdivタグ)に挿入する、という動きをする
 
-![reactdom](/api/project/file/react-handson/images/2/reactdom.png)
+![reactdom](/images/2/reactdom.png)
 
 - つまりApp.jsの内容を拡張していくことで、画面に表示する内容を拡張していくことができる
 

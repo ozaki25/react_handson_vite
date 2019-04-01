@@ -9,7 +9,7 @@
 
 ## 完成形
 
-![counter](/api/project/file/react-handson/images/4/counter.gif)
+![counter](/images/4/counter.gif)
 
 ## やること
 
@@ -90,7 +90,7 @@ export default Counter;
 
 - 画像のように中央寄せになっていればOK
 
-![counter](/api/project/file/react-handson/images/4/counter.png)
+![counter](/images/4/counter.png)
 
 ## ボタンクリックで処理を実行させる
 
@@ -219,13 +219,13 @@ function Counter() {
 
 - ここまでで完成形と同じものが完成
 
-![counter](/api/project/file/react-handson/images/4/counter.gif)
+![counter](/images/4/counter.gif)
 
 ## 課題
 
 - ボタンを押すと、現在の値を2乗した値に更新されるボタンを作ってみよう
 
-![counter2](/api/project/file/react-handson/images/4/counter2.gif)
+![counter2](/images/4/counter2.gif)
 
 ## まとめ
 
