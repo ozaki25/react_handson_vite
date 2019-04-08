@@ -371,7 +371,7 @@ function TodoList() {
 
 ![todo5](/images/5/todo5.gif)
 
-### まとめ
+## まとめ
 
 - `useState`はStateとして配列も管理することができる
 - `.map`をうまく活用することで配列を繰り返し処理で画面に表示することができる
