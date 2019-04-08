@@ -346,8 +346,93 @@ function Translate() {
 
 ![communication](/images/7/communication.gif)
 
+## 課題
+
+- 日本語から英語に翻訳した結果を、英語から日本語に再翻訳する機能を実装してみよう
+- 英語から日本語に翻訳するには`translateApi.js`の以下の実装部分を変更すればよい
+    - クエリ部分の`source`が翻訳元の言語で`target`が翻訳後の言語を定義してるのでそこを書き換えることで翻訳言語を指定できる
+
+```js
+  return axios.get(`${url}?text=${text}&source=ja&target=en`);
+```
+
+![communication7](/images/7/communication7.gif)
+
 ## まとめ
 
 - axiosを使うことで通信処理を実装することができる
 - Promiseを返す非同期処理を扱う時はasync/awaitを使うとよい
 - 通信処理を扱う時はエラーハンドリングやLoadingの表示にも気を使うとよい
+
+## 課題の回答例
+
+- `src/api/translateApi.js`
+
+```js
+import axios from 'axios';
+
+const url =
+  'https://script.google.com/macros/s/AKfycby3NwZhozMWbkS8evh2t3dvfJgKxCBdchI0Xdr31L_BoUb7uqyE/exec';
+
+export function translateJaToEn(text) {
+  return axios.get(`${url}?text=${text}&source=ja&target=en`);
+}
+
+export function translateEnToJa(text) {
+  return axios.get(`${url}?text=${text}&source=en&target=ja`);
+}
+```
+
+- `src/components/Translate.js`
+
+```jsx
+import React from 'react';
+import { translateJaToEn, translateEnToJa } from '../api/translateApi';
+
+function Translate() {
+  const [result, setResult] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const input = React.useRef(null);
+
+  const onClickTranslate = async () => {
+    try {
+      setLoading(true);
+      const response = await translateJaToEn(input.current.value);
+      setResult(response.data);
+    } catch (e) {
+      alert(e.toString());
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onClickReTranslate = async () => {
+    try {
+      setLoading(true);
+      const response = await translateEnToJa(result);
+      setResult(response.data);
+    } catch (e) {
+      alert(e.toString());
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <input ref={input} />
+          <button onClick={onClickTranslate}>日->英</button>
+          <button onClick={onClickReTranslate}>日本語に再翻訳</button>
+          <p>{result}</p>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default Translate;
+```
