@@ -38,9 +38,9 @@ cd react-handson
     - `npm start`
 - ブラウザが勝手に開いて以下の画面が表示されればOK
     - `http://localhost:3000/`で稼働する
-<!--
-    - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする
+<!--     - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする -->
 
+<!--
 ![url1](/react_handson/images/1/url1.png)
 ![url2](/react_handson/images/1/url2.png)
 -->
