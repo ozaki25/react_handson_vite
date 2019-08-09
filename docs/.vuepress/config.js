@@ -13,4 +13,5 @@ module.exports = {
     ],
   },
   serviceWorker: true,
+  head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };
