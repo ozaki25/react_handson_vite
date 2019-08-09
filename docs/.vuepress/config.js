@@ -12,4 +12,5 @@ module.exports = {
       '/7_communication',
     ],
   },
+  serviceWorker: true,
 };
