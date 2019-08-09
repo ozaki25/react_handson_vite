@@ -5,7 +5,7 @@
 
 - EclipseCheを使って開発する場合、コマンドは画面下部の`Terminal`で実行する
 
-![terminal](/images/1/terminal.png)
+![terminal](/react_handson/images/1/terminal.png)
 
 -->
 
@@ -41,16 +41,16 @@ cd react-handson
 <!--
     - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする
 
-![url1](/images/1/url1.png)
-![url2](/images/1/url2.png)
+![url1](/react_handson/images/1/url1.png)
+![url2](/react_handson/images/1/url2.png)
 -->
 
 
-![template](/images/1/template.png)
+![template](/react_handson/images/1/template.png)
 
 - ホットリロードの確認
     - `src/App.js`を開き`Welcome to React`の文言を適当に書き換えて保存する
     - 自動でリロードが走りコンソールにログが流れる
     - ブラウザが勝手にリリードされ変更が反映される
 
-![hotreload](/images/1/hotreload.gif)
+![hotreload](/react_handson/images/1/hotreload.gif)

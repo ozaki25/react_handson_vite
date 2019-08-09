@@ -8,7 +8,7 @@
 
 ## 完成形
 
-![hello2](/images/3/hello2.png)
+![hello2](/react_handson/images/3/hello2.png)
 
 ## やること
 
@@ -61,7 +61,7 @@ export default App;
 
 - ブラウザに`Hello World`が2つ表示されればOK
 
-![hello](/images/3/hello.png)
+![hello](/react_handson/images/3/hello.png)
 
 ## コンポーネントに引数を渡す
 
@@ -114,13 +114,13 @@ export default App;
     - `{}`内の値は、渡した順序ではなく名前で紐づけされている
 - 以下のような画面が表示されていれば完成
 
-![hello2](/images/3/hello2.png)
+![hello2](/react_handson/images/3/hello2.png)
 
 ## 課題
 
 - Greetコンポーネントの引数を`name`から`firstName`と`lastName`の２つに変更し、以下の画面を再現してみよう
 
-![hello3](/images/3/hello3.png)
+![hello3](/react_handson/images/3/hello3.png)
 
 ## まとめ
 
