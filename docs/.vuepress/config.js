@@ -12,6 +12,11 @@ module.exports = {
       '/7_communication',
     ],
   },
-  serviceWorker: true,
+  plugins: {
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: true
+    }
+  },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };
