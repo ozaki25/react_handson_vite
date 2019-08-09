@@ -4,8 +4,10 @@
 
 ```
 git clone git@github.com:ozaki25/react_handson.git
-npm i -g vuepress
 cd react_handson
+npm i
+# or
+yarn
 yarn start or npm start
 open http://localhost:8080
 ```
