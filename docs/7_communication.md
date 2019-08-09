@@ -83,7 +83,7 @@ function Translate() {
 
   return (
     <div>
-      {/* reg属性を追加 */}
+      {/* ref属性を追加 */}
       <input ref={input} />
       {/* onClick属性を追加 */}
       <button onClick={onClick}>日->英</button>
