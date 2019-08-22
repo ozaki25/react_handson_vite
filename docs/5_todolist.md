@@ -9,7 +9,7 @@
 
 ## 完成形
 
-![todo5](/react_handson/images/5/todo5.gif)
+![todo5](/images/5/todo5.gif)
 
 ## やること
 
@@ -83,7 +83,7 @@ export default TodoList;
 
 - TodoListは`id`、`title`、`done`の3つのフィールドからなるTodoの配列とする
 
-![todo_console](/react_handson/images/5/todo_console.png)
+![todo_console](/images/5/todo_console.png)
 
 > ### メモ
 > - ブラウザ上でF12(もしくは右クリック->検証)を押すと開発者ツールを出すことができる
@@ -115,7 +115,7 @@ function TodoList() {
     - Reactの特徴である仮想DOMを用いたレンダリングの最適化を実現するために使われる
 - ここまででTodoの一覧が表示されるようになった
 
-![todo](/react_handson/images/5/todo.png)
+![todo](/images/5/todo.png)
 
 
 ## Todoの完了/未完了を切り替える
@@ -162,7 +162,7 @@ function TodoList() {
 
 - doneがtrueのTodoに取り消し線が表示されるようになった
 
-![todo2](/react_handson/images/5/todo2.png)
+![todo2](/images/5/todo2.png)
 
 ### クリックされたことを検知する
 
@@ -251,7 +251,7 @@ function TodoList() {
 
 - ここまでできるとTodoの完了/未完了をクリックすることで切り換えられるようになる
 
-![todo3](/react_handson/images/5/todo3.gif)
+![todo3](/images/5/todo3.gif)
 
 ## Todoを追加する
 
@@ -287,7 +287,7 @@ function TodoList() {
   );
 ```
 
-![todo4](/react_handson/images/5/todo4.png)
+![todo4](/images/5/todo4.png)
 
 ### 入力内容を取得する
 
@@ -369,7 +369,7 @@ function TodoList() {
 - これで入力された内容がTodoListの末尾に追加されるようになった
 - 入力した内容が残り続けないように、空文字をセットすることでフォームをリセットしている
 
-![todo5](/react_handson/images/5/todo5.gif)
+![todo5](/images/5/todo5.gif)
 
 ## まとめ
 

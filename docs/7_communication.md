@@ -8,7 +8,7 @@
 
 ## 完成形
 
-![communication](/react_handson/images/7/communication.gif)
+![communication](/images/7/communication.gif)
 
 ## やること
 
@@ -62,7 +62,7 @@ export default App;
 
 - ここまでで以下のような見た目が完成する
 
-![communication2](/react_handson/images/7/communication2.png)
+![communication2](/images/7/communication2.png)
 
 - もうひと手間加えて、ボタンクリック時に入力内容を取得できるところまで実装しておく
     - これまでの章で学んだことの復習
@@ -185,7 +185,7 @@ export default Translate;
 - ②:通信処理の実行結果を取得しconsoleに表示している
     - この段階で翻訳したい日本語を入力してボタンを押すとコンソールに`Promise`と表示されてしまう
 
-![communication3](/react_handson/images/7/communication3.png)
+![communication3](/images/7/communication3.png)
 
 - `Promise`を返す関数は非同期(=処理が完了する前に結果を返す)で実行されてしまう
     - 今回の例でいうと通信処理が完了する前に結果がreturnされてしまう
@@ -212,7 +212,7 @@ function Translate() {
 - この状態で実行すると以下のように通信処理の結果を取得することができている
     - 通信処理のレスポンスは`data`プロパティに入っているので、ここでは`response.data`とすると翻訳結果にアクセスできる
 
-![communication4](/react_handson/images/7/communication4.png)
+![communication4](/images/7/communication4.png)
 
 
 ## 翻訳結果を画面に反映
@@ -253,7 +253,7 @@ export default Translate;
 - ③:pタグの値を`result`に変更することで翻訳結果を表示するようにした
 - ここまでで入力した日本語を翻訳APIを使って英訳し、画面に表示するまでが完成した
 
-![communication5](/react_handson/images/7/communication5.png)
+![communication5](/images/7/communication5.png)
 
 ## その他
 
@@ -287,7 +287,7 @@ function Translate() {
 - try-catchを使うことで例外発生時のハンドリングを追加した
 - ネットワークを切断してボタンを押してみると以下のようにalertが表示される
 
-![communication6](/react_handson/images/7/communication6.png)
+![communication6](/images/7/communication6.png)
 
 ### Loadingの表示
 
@@ -344,7 +344,7 @@ function Translate() {
 - ④:三項演算子を使ってloadingがtrueの時は`Loading...`を、falseの時はコンテンツを表示するように制御している
 - ここまでできると完成形と同じ動きが完成する
 
-![communication](/react_handson/images/7/communication.gif)
+![communication](/images/7/communication.gif)
 
 ## 課題
 
@@ -356,7 +356,7 @@ function Translate() {
   return axios.get(`${url}?text=${text}&source=ja&target=en`);
 ```
 
-![communication7](/react_handson/images/7/communication7.gif)
+![communication7](/images/7/communication7.gif)
 
 ## まとめ
 
