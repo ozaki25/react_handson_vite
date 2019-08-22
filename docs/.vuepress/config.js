@@ -1,6 +1,6 @@
 module.exports = {
   title: 'ReactHandson',
-  base: '/react_handson/',
+  // base: '/react_handson/',
   themeConfig: {
     sidebar: [
       '/1_setup',
@@ -15,8 +15,8 @@ module.exports = {
   plugins: {
     '@vuepress/pwa': {
       serviceWorker: true,
-      updatePopup: true
-    }
+      updatePopup: true,
+    },
   },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };
