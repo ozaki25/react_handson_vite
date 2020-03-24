@@ -102,12 +102,12 @@ export default Counter;
 
 function Counter() {
   // ーを押した時の処理を追加
-  const down = function() {
+  const down = () => {
     alert('down');
   };
 
   // ＋を押した時の処理を追加
-  const up = function() {
+  const up = () => {
     alert('up');
   };
 
@@ -154,11 +154,11 @@ function Counter() {
   // countというStateを定義する
   const [count, setCount] = React.useState(0)
 
-  const down = function() {
+  const down = () => {
     alert('down');
   };
 
-  const up = function() {
+  const up = () => {
     alert('up');
   };
 
@@ -194,12 +194,12 @@ function Counter() {
 function Counter() {
   const [count, setCount] = React.useState(0)
 
-  const down = function() {
+  const down = () => {
     // countの値を更新する処理を追加
     setCount(count - 1);
   };
 
-  const up = function() {
+  const up = () => {
     // countの値を更新する処理を追加
     setCount(count + 1);
   };
@@ -252,15 +252,15 @@ const styles = {
 function Counter() {
   const [count, setCount] = React.useState(0);
 
-  const down = function() {
+  const down = () => {
     setCount(count - 1);
   };
 
-  const up = function() {
+  const up = () => {
     setCount(count + 1);
   };
 
-  const power = function() {
+  const power = () => {
     setCount(count ** 2 );
   };
 
