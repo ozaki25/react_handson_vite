@@ -177,7 +177,7 @@ function TodoList() {
   const [todoList, setTodoList] = React.useState(defaultTodo);
 
   // toggleCompleteメソッドを追加
-  const toggleComplete = e => {
+  const toggleComplete = (e) => {
     alert(e.target.id); // e.target.idでクリックされた要素のid属性を取得できる
   };
 
@@ -212,7 +212,7 @@ function TodoList() {
 function TodoList() {
   const [todoList, setTodoList] = React.useState(defaultTodo);
 
-  const toggleComplete = e => {
+  const toggleComplete = (e) => {
     // 属性の値は全て文字列で返却されるので数値型に変換する
     const id = Number(e.target.id);
 
