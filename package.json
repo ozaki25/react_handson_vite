@@ -10,5 +10,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vuepress": "^1.4.0"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.4.0"
+  }
 }
