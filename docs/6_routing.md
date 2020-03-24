@@ -37,18 +37,18 @@ function Router() {
   return (
     <BrowserRouter>
       <div>
-        <Route path="/" component={Hello} exact />
+        <Route path="/" exact>
+          <Hello />
+        </Route>
       </div>
     </BrowserRouter>
   );
 }
 
 export default Router;
-
 ```
 
-- `Route`タグにURLとコンポーネントのマッピングをする記述
-    - `path`属性にURLを、`component`属性にコンポーネントを指定する
+- `Route`タグのpath属性にURLを記載し、子要素としてそのURLにアクセスした際に表示するコンポーネントグを記載する
 
 > ### メモ
 > - react-routerというライブラリの`BrowserRouter`や`Route`を使っている
@@ -84,10 +84,18 @@ function Router() {
   return (
     <BrowserRouter>
       <div>
-        <Route path="/" component={Hello} exact />
-        <Route path="/hello" component={Hello} exact />
-        <Route path="/counter" component={Counter} exact />
-        <Route path="/todo-list" component={TodoList} exact />
+        <Route path="/" exact>
+          <Hello />
+        </Route>
+        <Route path="/hello" exact>
+          <Hello />
+        </Route>
+        <Route path="/counter" exact>
+          <Counter />
+        </Route>
+        <Route path="/todo-list" exact>
+          <TodoList />
+        </Route>
       </div>
     </BrowserRouter>
   );
@@ -146,10 +154,18 @@ function Router() {
     <BrowserRouter>
       <div>
         <Header /> {/* Headerコンポーネントを追加 */}
-        <Route path="/" component={Hello} exact />
-        <Route path="/hello" component={Hello} exact />
-        <Route path="/counter" component={Counter} exact />
-        <Route path="/todo-list" component={TodoList} exact />
+        <Route path="/" exact>
+          <Hello />
+        </Route>
+        <Route path="/hello" exact>
+          <Hello />
+        </Route>
+        <Route path="/counter" exact>
+          <Counter />
+        </Route>
+        <Route path="/todo-list" exact>
+          <TodoList />
+        </Route>
       </div>
     </BrowserRouter>
   );
