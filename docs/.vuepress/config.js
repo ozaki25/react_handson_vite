@@ -11,4 +11,7 @@ module.exports = {
       '/7_communication',
     ],
   },
+  plugins: [
+    ['@vuepress/google-analytics', { 'ga': 'UA-127308140-3' }],
+  ],
 };
