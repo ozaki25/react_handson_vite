@@ -1,5 +1,6 @@
 module.exports = {
   title: 'ReactHandson',
+  // base: '/react_handson/',
   themeConfig: {
     sidebar: [
       '/1_setup',
@@ -11,7 +12,14 @@ module.exports = {
       '/7_communication',
     ],
   },
-  plugins: [
-    ['@vuepress/google-analytics', { 'ga': 'UA-127308140-3' }],
-  ],
+  plugins: {
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: true,
+    },
+    '@vuepress/google-analytics': {
+      ga: 'UA-127308140-3',
+    },
+  },
+  head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };

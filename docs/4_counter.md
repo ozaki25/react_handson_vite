@@ -103,7 +103,7 @@ export default Counter;
 function Counter() {
   // ーを押した時の処理を追加
   const down = function() {
-    alerst('down');
+    alert('down');
   };
 
   // ＋を押した時の処理を追加

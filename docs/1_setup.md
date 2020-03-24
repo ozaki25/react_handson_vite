@@ -1,10 +1,13 @@
 # 1.開発環境構築
 
+<!--
 ## コマンドの実行
 
 - EclipseCheを使って開発する場合、コマンドは画面下部の`Terminal`で実行する
 
 ![terminal](/images/1/terminal.png)
+
+-->
 
 ## 前提
 
@@ -35,10 +38,12 @@ cd react-handson
     - `npm start`
 - ブラウザが勝手に開いて以下の画面が表示されればOK
     - `http://localhost:3000/`で稼働する
-    - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする
+<!--     - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする -->
 
+<!--
 ![url1](/images/1/url1.png)
 ![url2](/images/1/url2.png)
+-->
 
 
 ![template](/images/1/template.png)
