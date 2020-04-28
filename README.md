@@ -5,21 +5,19 @@
 ```
 git clone git@github.com:ozaki25/react_handson.git
 cd react_handson
-npm i
-# or
 yarn
-yarn start or npm start
+yarn start
 open http://localhost:8080
 ```
 
 ## production
 
 ```
-yarn build or npm run build
+yarn build
 ```
 
-generated static files in docs/.vuepress/dist
+generated static files in ./public
 
 ## demo
 
-- https://ozaki25.github.io/react_handson/
+- https://react-handson-ozaki25.now.sh/

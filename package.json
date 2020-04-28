@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "deploy": "npm run build && cd docs/.vuepress/dist && git init && git add -A && git commit -m 'deploy' && git push -f git@github.com:ozaki25/react_handson.git master:gh-pages"
+    "build": "vuepress build docs --dest public"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.4.0",
-    "@vuepress/plugin-pwa": "^1.0.0-rc.1",
-    "vuepress": "^1.4.0"
+    "@vuepress/plugin-back-to-top": "^1.4.1",
+    "@vuepress/plugin-google-analytics": "^1.4.1",
+    "@vuepress/plugin-pwa": "^1.4.1",
+    "vuepress": "^1.4.1"
   }
 }

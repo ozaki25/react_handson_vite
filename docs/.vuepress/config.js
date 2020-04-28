@@ -12,7 +12,11 @@ module.exports = {
       '/7_communication',
     ],
   },
+  markdown: {
+    lineNumbers: true,
+  },
   plugins: {
+    '@vuepress/back-to-top': {},
     '@vuepress/pwa': {
       serviceWorker: true,
       updatePopup: true,
