@@ -20,4 +20,4 @@ generated static files in ./public
 
 ## demo
 
-- https://ozaki25.github.io/react_handson/
+- https://react-handson-ozaki25.now.sh/
