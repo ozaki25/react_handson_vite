@@ -16,13 +16,27 @@
 - コンポーネントを使う
 - コンポーネントに引数を渡す
 
+## Reactコンポーネントとは
+
+- 2章で出てきたApp.jsのようにhtmlをreturnする関数をReactコンポーネント(或いは単にコンポーネント)と呼ぶ
+
+```jsx
+import React from 'react';
+
+function App() {
+  return <h1>Hello World</h1>;
+}
+
+export default App;
+```
+
 ## コンポーネントを作る
 
 - Reactは複数のコンポーネントを作成しそれらを組み合わせていくことで開発を行う
 
 ### Helloコンポーネントを作る
 
-- `src/components`ディレクトリに`Hello.js`を作成する
+- `src/components`ディレクトリを作り`Hello.js`を作成する
     - `Hello World`を2つ表示するだけのコンポーネント
 
 ```jsx
@@ -40,20 +54,25 @@ function Hello() {
 export default Hello;
 ```
 
+::: tip
+Reactコンポーネントは慣習として最初の文字を大文字で作成します。function名とファイル名の最初の文字は大文字にしましょう。
+:x: hello.js :o: Hello.js
+:::
+
 ## コンポーネントを使う
 
 ### Helloコンポーネントを使う
 
 - 作成したHelloコンポーネントを呼び出して画面に表示されるようにする
 - `import`したコンポーネントはhtmlタグのようにして使うことができる
-- `App.js`を修正する
+- `src/App.js`を修正する
 
 ```jsx
 import React from 'react';
 import Hello from './components/Hello'; // Helloコンポーネントをimportする
 
 function App() {
-  return <Hello />; // importしたHelloコンポーネントを返すように変更する
+  return <Hello />; // importしたHelloコンポーネント使う
 }
 
 export default App;
@@ -65,8 +84,8 @@ export default App;
 
 ## コンポーネントに引数を渡す
 
-- これまでのコンポーネントは毎回決まった値だけを返していた
-- 次は、引数を渡してそれをコンポーネントに埋め込んでみる
+- Helloコンポーネントは決まった値だけを返していた
+- 次は引数を渡してそれをコンポーネントに埋め込んでみる
 
 ### Greetコンポーネントを作る
 
@@ -75,16 +94,20 @@ export default App;
 ```jsx
 import React from 'react';
 
-function Greet({ name }) {
-  return <p>Hello {name}さん！</p>; // {}で囲うと変数を埋め込むことができる
+function Greet({ name }) { // 引数は{}で囲って受け取る
+  return <p>Hello {name}さん！</p>; // htmlタグの中で{}を使うと変数を埋め込むことができる
 }
 
 export default Greet;
 ```
 
+::: tip
+引数を複数受け取りたい場合は`,`区切りで書くことができる。`function Greet({ name, name2, name3 }) {`
+:::
+
 ### Greetコンポーネントを使う
 
-- `App.js`を修正してGreetコンポーネントを呼び出す
+- `src/App.js`を修正してGreetコンポーネントを呼び出す
 
 ```jsx
 import React from 'react';
@@ -96,7 +119,7 @@ function App() {
     <div>
       <Hello />
       {/* 引数は属性として渡す */}
-      <Greet name="Ozaki" />
+      <Greet name="尾崎" />
     </div>
   );
 }
@@ -107,11 +130,11 @@ export default App;
 ### 引数の受け渡し
 
 - 引数は属性に値を設定することで渡すことができる
-    - `<Greet name="Ozaki" />`
+    - `<Greet name="尾崎" />`
 - 属性で渡された値は関数の宣言時に受け取ることができる
     - `function Greet({ name }) {`
 - 引数を渡す時の属性名と、受け取る時の変数名は同一でないといけないので注意
-    - `{}`内の値は、渡した順序ではなく名前で紐づけされている
+    - 引数の受け渡しは、渡した順序ではなく名前で紐づけされている
 - 以下のような画面が表示されていれば完成
 
 ![hello2](/images/3/hello2.png)
@@ -130,7 +153,7 @@ export default App;
 
 ## 課題の回答例
 
-- App.js
+- src/App.js
 
 ```jsx
 import React from 'react';
@@ -141,9 +164,9 @@ function App() {
   return (
     <div>
       <Hello />
-      <Greet firstName="Haruki" lastName="Nishikawa" />
-      <Greet firstName="Takuya" lastName="Nakashima" />
-      <Greet firstName="Taishi" lastName="Ohta" />
+      <Greet firstName="遥輝" lastName="西川" />
+      <Greet firstName="卓也" lastName="中島" />
+      <Greet firstName="拳士" lastName="杉谷" />
     </div>
   );
 }
@@ -151,13 +174,13 @@ function App() {
 export default App;
 ```
 
-- Greet.js
+- src/Greet.js
 
 ```jsx
 import React from 'react';
 
 function Greet({ firstName, lastName }) {
-  return <p>Hello {firstName} {lastName}さん！</p>;
+  return <p>Hello {lastName} {firstName}さん！</p>;
 }
 
 export default Greet;
