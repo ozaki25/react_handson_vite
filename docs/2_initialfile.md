@@ -40,11 +40,11 @@ export default App;
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>React App</title>
   </head>
   <body>
@@ -52,12 +52,6 @@ export default App;
   </body>
 </html>
 ```
-
-### 動作確認
-
-- この状態で`npm start`すると画面に`Hello World`が表示される
-
-![hello](/images/2/hello.png)
 
 ## ファイル一覧
 
@@ -78,6 +72,11 @@ export default App;
 
 - 基本的に`src`配下のファイルをいじっていくことになる
 
+### 動作確認
+
+- この状態で`npm start`すると画面に`Hello World`が表示される
+
+![hello](/images/2/hello.png)
 
 ## 雛形の動作の説明
 
@@ -115,20 +114,19 @@ export default App;
 
 - `App.js`の正体は`<h1>Hello World</h1>`というhtmlタグを返す関数である
 
-> ### メモ
-> - Javaでいう以下のメソッドと同じようなイメージ(厳密にはだいぶ違うけど)
->   ```java
->   public static String App() {
->     return "<h1>Hello World</h1>";
->   }
->   ```
->
->
-> - JavaScriptは`export default App;`といった風にexportしないと、他のファイルから`import`できない
+::: tip Javaを学習済みの人向けに
+- Javaでいう以下のメソッドと同じようなイメージ(厳密にはだいぶ違うけど)
+  ```java
+  public static String App() {
+    return "<h1>Hello World</h1>";
+  }
+  ```
+- JavaScriptは`export default App;`といった風に`export`しないと他のファイルから`import`することができない
+:::
 
 ### index.js
 
-- jsの世界とhtmlの世界をつなぐファイル
+- React(JavaScript)の世界とhtmlの世界をつなぐファイル
 
 ```jsx
 import React from 'react';
@@ -144,13 +142,13 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 ![reactdom](/images/2/reactdom.png)
 
-- つまりApp.jsの内容を拡張していくことで、画面に表示する内容を拡張していくことができる
+- つまりApp.jsの内容を拡張していくことで画面に表示する内容を拡張していくことができる
 
-> #### メモ
-> - JavaScriptでは外部ライブラリや別ファイルを`import`で読み込む
-> - 自作のファイルは相対パスで指定する
-> - 拡張子が`.js`の場合は省略できる
-
+::: tip
+- JavaScriptでは外部ライブラリや別ファイルを`import`で読み込む
+- 自作のファイルは相対パスで指定することができる
+- 拡張子が`.js`の場合は省略できる
+:::
 
 ### まとめ
 
