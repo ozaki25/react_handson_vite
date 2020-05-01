@@ -187,7 +187,7 @@ export default TodoList;
 
 - Todoを表示するpタグに`onClick`属性を追加する
 - どのTodoがクリックされたか判別できるように`id`属性も追加しておく
-- `toggleComplete`メソッドを追加しクリックした際に呼び出されるようにする
+- `toggleComplete`関数を追加しクリックした際に呼び出されるようにする
 
 ```jsx{19-22,28,32-33}
 import React from 'react';
@@ -208,7 +208,7 @@ const styles = {
 function TodoList() {
   const [todoList, setTodoList] = React.useState(defaultTodo);
 
-  // toggleCompleteメソッドを追加
+  // toggleComplete関数を追加
   const toggleComplete = (event) => {
     alert(event.target.id); // event.target.idでクリックされた要素のid属性を取得できる
   };
@@ -393,7 +393,7 @@ function TodoList() {
   // 入力域の参照を定義
   const input = React.useRef(null);
 
-  // addTodoメソッドを追加
+  // addTodo関数を追加
   const addTodo = () => {
     alert(input.current.value); // 入力内容はinput.current.valueで取得できる
   };
@@ -439,7 +439,7 @@ export default TodoList;
     - `const input = React.useRef(null);`で入力域の参照を定義
     - `<input ref={input} />`で`ref`属性にセットすることで、変数`input`に入力域の情報が格納される
 - 追加ボタンクリック時の挙動
-    - `<button onClick={addTodo}>追加</button>`でclick時に`addTodo`メソッドを呼び出すようにしている
+    - `<button onClick={addTodo}>追加</button>`でclick時に`addTodo`関数を呼び出すようにしている
 - ここまでで追加ボタンを押すと入力した内容がalertに表示されるようになった
 
 ### 入力内容をTodoListに追加
