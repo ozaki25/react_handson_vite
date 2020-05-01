@@ -2,7 +2,7 @@
 
 ## ゴール
 
-- react-routerを使ってこれまで作った3つのページを遷移できるようにする
+- [react-router](https://reacttraining.com/react-router/)を使ってこれまで作った3つのページを遷移できるようにする
 
 ## 完成形
 
@@ -23,9 +23,10 @@ npm i react-router-dom
 
 ## 各ページにURLを割り当てる
 
-### routingに関するファイルを作成する
+### routingに関する設定ファイルを作成する
 
 - コンポーネントとURLのマッピングを記載するファイルを追加する
+    - まずはHelloだけ
 - `src`配下に`router.js`を作成する
 
 ```jsx
@@ -48,15 +49,16 @@ function Router() {
 export default Router;
 ```
 
-- `Route`タグのpath属性にURLを記載し、子要素としてそのURLにアクセスした際に表示するコンポーネントグを記載する
+- `Route`タグのpath属性にURLを記載し、子要素としてそのURLにアクセスした際に表示するコンポーネントを記載する
 
-> ### メモ
-> - react-routerというライブラリの`BrowserRouter`や`Route`を使っている
-> - ライブラリのルールに則った書き方をすることで簡単にルーティングを実装できる
+::: tip
+- react-routerというライブラリの`BrowserRouter`や`Route`を使っている
+- ライブラリのルールに則った書き方をすることで簡単にルーティングを実装できる
+:::
 
 - 作成したRoutingを使うように`App.js`を修正
 
-```jsx
+```jsx{2,5}
 import React from 'react';
 import Router from './router'; // importを追加
 
@@ -67,13 +69,13 @@ function App() {
 export default App;
 ```
 
-- 現状ではうまくいっていれば`/`(http://localhost:3000/)にアクセスするとHelloWorldが表示される
+- 現状ではうまくいっていれば`/`(ここでは[http://localhost:3000/](http://localhost:3000/))にアクセスするとHelloWorldが表示される
 
 ### 各コンポーネントとURLのマッピングを追加
 
-- `Route`タグを追加して`Counter`、`TodoList`のルーティングも追加する
+- `src/router.js`に`/hello`,`/counter`,`/todo-list`のルーティングも追加する
 
-```jsx
+```jsx{4-5,14-22}
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Hello from './components/Hello';
@@ -134,14 +136,14 @@ function Header() {
 export default Header;
 ```
 
-- `NavLink`タグを使うことでページ遷移することができる
+- react-routerが提供する[NavLinkコンポーネント](https://reacttraining.com/react-router/web/api/NavLink)を使うことでページ遷移することができる
     - `to`属性に遷移先のURLを記載する
 
 ### Headerコンポーネントを適用する
 
-- `router.js`にHeaderコンポーネントを追加する
+- `src/router.js`にHeaderコンポーネントを追加する
 
-```jsx
+```jsx{6,12}
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Hello from './components/Hello';
@@ -174,7 +176,7 @@ function Router() {
 export default Router;
 ```
 
-- routerにHeaderコンポーネントを追加することで常にリンクが表示されるようになった
+- Routerタグで囲われていない外側にHeaderコンポーネントを追加したので常にリンクが表示されるようになった
 - ここまでで以下のように機能は完成した
 
 ![router2](/images/6/router2.gif)
@@ -182,9 +184,9 @@ export default Router;
 ### styleを整える
 
 - 最後にリンクの見た目を整える
-- `Header.js`を修正する
+- `src/components/Header.js`を修正する
 
-```jsx
+```jsx{4-20,25-26,29,32}
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -205,7 +207,6 @@ const styles = {
     color: '#fff'
   }
 };
-
 
 function Header() {
   return (
@@ -229,7 +230,7 @@ export default Header;
 
 - `NavLink`タグのstyle属性にstyleを指定することで見た目を整えている
 - activeStyle属性に指定されたstyleは、表示されてるページと一致するリンクにだけ適用される
-    - この機能はreact-routerで用意されいる
+    - この機能は[react-routerで用意されいる](https://reacttraining.com/react-router/web/api/NavLink/activestyle-object)
 
 - これで完成
 

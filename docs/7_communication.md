@@ -47,9 +47,9 @@ function Translate() {
 export default Translate;
 ```
 
-- `App.js`をTranslateコンポーネントを使うように修正する
+- `src/App.js`をTranslateコンポーネントを使うように修正する
 
-```jsx
+```jsx{2,5}
 import React from 'react';
 import Translate from './components/Translate'; // importを追加
 
@@ -68,14 +68,14 @@ export default App;
     - これまでの章で学んだことの復習
 - `src/components/Translate.js`を修正する
 
-```jsx
+```jsx{4-5,7-11,15-18}
 import React from 'react';
 
 function Translate() {
   // 入力域への参照を格納する変数を定義
   const input = React.useRef(null);
 
-  // ボタンクリック時に実行するメソッドを定義
+  // ボタンクリック時に実行する関数を定義
   const onClick = () => {
     // 入力内容を取得しalertで表示
     alert(input.current.value)
@@ -108,61 +108,63 @@ export default Translate;
 - `src/api/translateApi.js`を作成する
 
 ```js
-// ①axiosをimport
-import axios from 'axios';
+import axios from 'axios'; // axiosをimport
 
-// ②接続先のURL
+// 通信先のURLを定義
 const url = 'https://script.google.com/macros/s/AKfycby3NwZhozMWbkS8evh2t3dvfJgKxCBdchI0Xdr31L_BoUb7uqyE/exec';
 
-// ③翻訳したい文字列を引数で受け取る関数
+// 翻訳したい文字列を引数で受け取る関数
 export function translateJaToEn(text) {
-  // ④通信処理を実行し結果をreturnしている
+  // 通信処理を実行し結果を返却
   return axios.get(`${url}?text=${text}&source=ja&target=en`);
 }
 ```
 
-- ①:axiosを使用するためにimportしている
-- ②:今回用意した翻訳APIのURL
+- 通信先のURLはGoogle翻訳を使っている
     - 個人アカウントで作成しているので叩き過ぎには注意!!
-- ③:引数を一つ受け取る`translateJaToEn`関数を作成
-    - 関数に`export`をつけることで別のファイルからimportできるようにしている
-- ④:axiosでgetの通信を実施し結果をreturnしている
-    - `axios.get(URL)`の形式でGETの通信を実行することができる
-    - 今回使いAPIは翻訳したい文字列をURLに含む仕様のため、引数として受け取った`text`を埋め込んでいる
+- 引数を一つ受け取る`translateJaToEn`関数を作成
+    - 関数に`export`をつけることで別のファイルから`import`できるようにしている
+    - axiosでgetの通信を実施し結果を`return`している
+        - `axios.get(URL)`の形式でGETの通信を実行することができる
+        - 今回使いAPIは翻訳したい文字列をURLに含む仕様のため、引数として受け取った`text`をURLに埋め込んでいる
 
-> ### メモ
-> - HTTP通信はURLとHTTPメソッド(GETやPOST)を指定することで通信先を特定することができる
-> - axiosにはHTTPメソッドごとにメソッドが用意されており、`axios.get(URL)`や`axios.post(URL)`といった形式で使うことができる
+::: tip
+- HTTP通信はURLとHTTPメソッド(GETやPOST)を指定することで通信先を特定することができる
+- axiosにはHTTPメソッドごとに関数が用意されており、`axios.get(URL)`や`axios.post(URL)`といった形式で使うことができる
+:::
 
-> ### メモ
-> - 通信処理を実行する際に任意のパラメータを渡すことができる(メソッドを実行する時に引数を渡すのと同じような感覚)
-> - HTTPメソッドがGETの場合はURLにクエリとして付与する
->     - 以下の`?`以降がクエリに当たる
->     - `axios.get('http://localhost:8080/test?name=ozaki25&age=28')`
-> - HTTPメソッドがGET以外の場合(POST等)は第二引数として渡すことができる
->     - `axios.post('http://localhost:8080/test', JSON.stringify({ name: 'ozaki25', age: 28 }))`
->     - 詳細はまた別の機会に
+::: tip
+- 通信処理を実行する際に任意のパラメータを渡すことができる(関数を実行する時に引数を渡すのと同じような感覚)
+- HTTPメソッドがGETの場合はURLにクエリとして付与する
+    - 以下の`?`以降がクエリに当たる
+    - `axios.get('http://localhost:8080/test?name=ozaki25&age=28')`
+- HTTPメソッドがGET以外の場合(POST等)は第二引数として渡すことができる
+    - `axios.post('http://localhost:8080/test', JSON.stringify({ name: 'ozaki25', age: 28 }))`
+    - 詳細はまた別の機会に
+:::
 
-> ### メモ
-> - JavaScriptは文字列を``(バッククオート)で定義した場合`${}`を使うことで変数を埋め込むことができる
-> ```js
-> const name = 'ozaki25';
-> console.log(`Hello ${name} さん`);
-> // Hello ozaki25 さん
+::: tip
+- JavaScriptは文字列を``(バッククオート)で定義した場合`${}`を使うことで変数を埋め込むことができる
+```js
+const name = 'ozaki25';
+console.log(`Hello ${name} さん`);
+// Hello ozaki25 さん
+```
+:::
 
 ### 作成した通信処理を行う関数を使用する
 
 - Translateコンポーネントで、今作成した`translateJaToEn`関数を使うようにする
 
-```jsx
+```jsx{2,7-9}
 import React from 'react';
-// ①:importを追加
-import { translateJaToEn } from '../api/translateApi';
+import { translateJaToEn } from '../api/translateApi'; // importを追加
 
 function Translate() {
   const input = React.useRef(null);
+
   const onClick = () => {
-    // ②:通信処理を呼び出している
+    // 通信処理を呼び出している
     const response = translateJaToEn(input.current.value);
     console.log(response);
   };
@@ -179,10 +181,7 @@ function Translate() {
 export default Translate;
 ```
 
-- ①:先程作成した`translateJaToEn`関数をimportしている
-    - これまでと違ってimport対象を`{}`で囲って記述しているのはexport時に`default`を使っていないため
-    - `default`を使うと1ファイルで1つしかexportできないため今後`translateEnToJa`等が登場した時に追加しやすいようにdefaultエクスポートは使わなかった
-- ②:通信処理の実行結果を取得しconsoleに表示している
+- 通信処理の実行結果を取得しconsoleに表示している
     - この段階で翻訳したい日本語を入力してボタンを押すとコンソールに`Promise`と表示されてしまう
 
 ![communication3](/images/7/communication3.png)
@@ -192,23 +191,34 @@ export default Translate;
     - 実行結果が分かる前にreturnしているので`Promise`という特殊な値が返される
 - なので非同期処理の実行が完了してからreturnしてもらうように以下のような修正を加える
 
-```jsx
-// 省略
+```jsx{7-10}
+import React from 'react';
+import { translateJaToEn } from '../api/translateApi'; // importを追加
 
 function Translate() {
   const input = React.useRef(null);
+
   // asyncを追加
   const onClick = async () => {
     // awaitを追加
     const response = await translateJaToEn(input.current.value);
     console.log(response);
   };
-  // 省略
+
+  return (
+    <div>
+      <input ref={input} />
+      <button onClick={onClick}>日->英</button>
+      <p>翻訳結果</p>
+    </div>
+  );
 }
+
+export default Translate;
 ```
 
 - `Promise`を返す関数の実行時に`await`というキーワードを付与すると、処理が完了してから結果をreturnしてくれるようになる
-- `await`を使うためには、その処理が記述されているメソッドに`async`というキーワードを定義しておかなければいけない
+- `await`を使うためには、その処理が記述されている関数に`async`というキーワードを定義しておかなければいけない
 - この状態で実行すると以下のように通信処理の結果を取得することができている
     - 通信処理のレスポンスは`data`プロパティに入っているので、ここでは`response.data`とすると翻訳結果にアクセスできる
 
@@ -220,17 +230,19 @@ function Translate() {
 - 翻訳APIにアクセスして結果を取得するところまでできたので、画面へ表示させる処理を追加する
 - これまでの章にも登場した`React.useState`を使って翻訳結果の値を管理する
 
-```jsx
+```jsx{5-6,12-13,20-21}
 import React from 'react';
 import { translateJaToEn } from '../api/translateApi';
 
 function Translate() {
-  // ①:翻訳結果を管理するStateを定義(初期値は空文字)
+  // 翻訳結果を管理するStateを定義(初期値は空文字)
   const [result, setResult] = React.useState('');
+
   const input = React.useRef(null);
+
   const onClick = async () => {
     const response = await translateJaToEn(input.current.value);
-    // ②:翻訳結果をsetする
+    // 翻訳結果をsetする
     setResult(response.data);
   };
 
@@ -238,7 +250,7 @@ function Translate() {
     <div>
       <input ref={input} />
       <button onClick={onClick}>日->英</button>
-      {/* ③:Stateの値を表示するように変更 */}
+      {/* Stateの値を表示するように変更 */}
       <p>{result}</p>
     </div>
   );
@@ -247,10 +259,10 @@ function Translate() {
 export default Translate;
 ```
 
-- ①:`useState`を使って`result`というStateを定義した
+- 6行目で`useState`を使って`result`というStateを定義した
     - 初期値は空文字を設定している
-- ②:翻訳を実行して結果が返ってきたら`setResult`を実行して結果をsetしている
-- ③:pタグの値を`result`に変更することで翻訳結果を表示するようにした
+- onClick関数の中で翻訳処理を呼び出して結果が返ってきたら`setResult`を実行して結果をsetしている
+- pタグの値を`result`に変更することで翻訳結果を表示するようにした
 - ここまでで入力した日本語を翻訳APIを使って英訳し、画面に表示するまでが完成した
 
 ![communication5](/images/7/communication5.png)
@@ -263,13 +275,18 @@ export default Translate;
 
 - 通信処理の実装をする時はエラーハンドリングを必ず考えないといけない
 - 今回はエラーが発生した場合alertにメッセージを表示するようにする
-- `src/api/translateApi.js`の`onClick`メソッドを修正する
+- `src/api/translateApi.js`の`onClick`関数を修正する
 
 
-```jsx
+```jsx{10-17}
+import React from 'react';
+import { translateJaToEn } from '../api/translateApi';
+
 function Translate() {
   const [result, setResult] = React.useState('');
+
   const input = React.useRef(null);
+
   const onClick = async () => {
     // try-catchを追加する
     try {
@@ -280,8 +297,17 @@ function Translate() {
       alert(e.toString());
     }
   };
-  // 省略
+
+  return (
+    <div>
+      <input ref={input} />
+      <button onClick={onClick}>日->英</button>
+      <p>{result}</p>
+    </div>
+  );
 }
+
+export default Translate;
 ```
 
 - try-catchを使うことで例外発生時のハンドリングを追加した
@@ -296,52 +322,53 @@ function Translate() {
     - 実際のアプリではインジケータなどを出すようにするとよい
 - `src/api/translateApi.js`を修正する
 
-```jsx
+```jsx{6-7,13-14,19-21,25-26}
+import React from 'react';
+import { translateJaToEn } from '../api/translateApi';
+
 function Translate() {
   const [result, setResult] = React.useState('');
-  // ①:通信中かどうかを管理するStateを定義
+  // 通信中かどうかを管理するStateを追加
   const [loading, setLoading] = React.useState(false);
+
   const input = React.useRef(null);
 
   const onClick = async () => {
     try {
-      // ②:通信処理実行前にLoadingにtrueをset
+      // 通信処理実行前にloadingにtrueをset
       setLoading(true);
       const response = await translateJaToEn(input.current.value);
       setResult(response.data);
     } catch (e) {
       alert(e.toString());
     } finally {
-      // ③:処理が完了したloadingにfalseをset
+      // 処理が完了したらloadingにfalseをset
       setLoading(false);
     }
   };
 
+  // loadingがtrueの場合はLoading...を表示する
+  if (loading) return <p>Loading...</p>;
+
+  // loadingがfalseの場合は今まで通り
   return (
     <div>
-      {/* ④:loadingの値によって表示内容を出し分け */}
-      {loading ? (
-        {/* loadingがtrueの場合 */}
-        <p>Loading...</p>
-      ) : (
-        {/* loadingがfalseの場合 */}
-        <>
-          <input ref={input} />
-          <button onClick={onClick}>日->英</button>
-          <p>{result}</p>
-        </>
-      )}
+      <input ref={input} />
+      <button onClick={onClick}>日->英</button>
+      <p>{result}</p>
     </div>
   );
 }
+
+export default Translate;
 ```
 
-- ①:通信中かどうかを管理するloadingというStateを定義
+- 7行目に通信中かどうかを管理するloadingというStateを追加した
     - この値がtrueなら`Loading...`を、falseならコンテンツを表示するようにする
-- ②:通信処理を開始する直前にloadingをtrueに更新することで表示内容を切り替えている
-- ③:通信処理が完了したらloadingをfalseに切り替えている
-    - `finally`の処理はは、例外が発生してcatchに入った時も発生せず入らなかった時も必ず最後に実行される
-- ④:三項演算子を使ってloadingがtrueの時は`Loading...`を、falseの時はコンテンツを表示するように制御している
+- onClick関数の中でloadingの値を切り替えるようにした
+    - 通信処理を開始する直前にloadingをtrueに更新
+    - 通信処理が完了したらloadingをfalseに更新
+        - `finally`の処理は、例外が発生してcatchに入った時も含めて必ず最後に実行される
 - ここまでできると完成形と同じ動きが完成する
 
 ![communication](/images/7/communication.gif)
@@ -406,7 +433,7 @@ function Translate() {
     }
   };
 
-  const onClickReTranslate = async () => {
+  const onClickRetranslate = async () => {
     try {
       setLoading(true);
       const response = await translateEnToJa(result);
@@ -426,7 +453,7 @@ function Translate() {
         <>
           <input ref={input} />
           <button onClick={onClickTranslate}>日->英</button>
-          <button onClick={onClickReTranslate}>日本語に再翻訳</button>
+          <button onClick={onClickRetranslate}>日本語に再翻訳</button>
           <p>{result}</p>
         </>
       )}
