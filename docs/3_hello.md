@@ -67,7 +67,7 @@ Reactコンポーネントは慣習として最初の文字を大文字で作成
 - `import`したコンポーネントはhtmlタグのようにして使うことができる
 - `src/App.js`を修正する
 
-```jsx
+```jsx{2,5}
 import React from 'react';
 import Hello from './components/Hello'; // Helloコンポーネントをimportする
 
@@ -109,7 +109,7 @@ export default Greet;
 
 - `src/App.js`を修正してGreetコンポーネントを呼び出す
 
-```jsx
+```jsx{3,9-10}
 import React from 'react';
 import Hello from './components/Hello';
 import Greet from './components/Greet'; // importを追加
