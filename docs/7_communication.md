@@ -259,7 +259,7 @@ function Translate() {
 export default Translate;
 ```
 
-- 6票目で`useState`を使って`result`というStateを定義した
+- 6行目で`useState`を使って`result`というStateを定義した
     - 初期値は空文字を設定している
 - onClick関数の中で翻訳処理を呼び出して結果が返ってきたら`setResult`を実行して結果をsetしている
 - pタグの値を`result`に変更することで翻訳結果を表示するようにした
