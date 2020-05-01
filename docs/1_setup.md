@@ -20,15 +20,18 @@ node -v
 # v13.13.0
 ```
 
+- 入っていなければ公式からダウンロードしてください
+    - [https://nodejs.org/ja/](https://nodejs.org/ja/)
+
 ## 雛形の生成
 
 - `create-react-app`という公式のジェネレータを使う
 
 ```bash
-// 雛形の生成
+# 雛形の生成(ちょっと時間かかる)
 npx create-react-app react-handson
 
-// 生成したプロジェクトへ移動
+# 生成したプロジェクトへ移動
 cd react-handson
 ```
 
@@ -37,7 +40,7 @@ cd react-handson
 - 以下のコマンドを入力しアプリ起動
     - `npm start`
 - ブラウザが勝手に開いて以下の画面が表示されればOK
-    - `http://localhost:3000/`で稼働する
+    - [http://localhost:3000/](http://localhost:3000/)でアクセスできる
 <!--     - ※EclipseCheを使っている場合は以下の手順でURLを確認してアクセスする -->
 
 <!--
@@ -45,11 +48,22 @@ cd react-handson
 ![url2](/images/1/url2.png)
 -->
 
+::: tip
+停止する時は `Ctl + c`
+:::
+
 
 ![template](/images/1/template.png)
 
+- VSCodeでプロジェクトを開く
+
+![vscode1](/images/1/vscode1.png)
+![vscode2](/images/1/vscode2.png)
+
+
+
 - ホットリロードの確認
-    - `src/App.js`を開き`Welcome to React`の文言を適当に書き換えて保存する
+    - `src/App.js`を開き`Edit src/App.js and save to reload.`の文言を適当に書き換えて保存する
     - 自動でリロードが走りコンソールにログが流れる
     - ブラウザが勝手にリリードされ変更が反映される
 
