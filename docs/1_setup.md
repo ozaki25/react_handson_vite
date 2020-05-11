@@ -26,6 +26,7 @@ node -v
 ## 雛形の生成
 
 - `create-react-app`という公式のジェネレータを使う
+    - コマンドを実行したディレクトリに`react-handson`というディレクトリが生成される
 
 ```bash
 # 雛形の生成(ちょっと時間かかる)
@@ -61,10 +62,10 @@ cd react-handson
 ![vscode2](/images/1/vscode2.png)
 
 
-
 - ホットリロードの確認
+    - `npm start`でアプリを起動した状態でコードを修正してみる
     - `src/App.js`を開き`Edit src/App.js and save to reload.`の文言を適当に書き換えて保存する
     - 自動でリロードが走りコンソールにログが流れる
-    - ブラウザが勝手にリリードされ変更が反映される
+    - ブラウザが勝手にリロードされ変更が反映される
 
 ![hotreload](/images/1/hotreload.gif)
