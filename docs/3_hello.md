@@ -174,7 +174,7 @@ function App() {
 export default App;
 ```
 
-- src/Greet.js
+- src/components/Greet.js
 
 ```jsx
 import React from 'react';
