@@ -2,6 +2,7 @@ module.exports = {
   title: 'ReactHandson',
   // base: '/react_handson/',
   themeConfig: {
+    domain: 'https://react-handson.ozaki25.now.sh',
     sidebar: [
       '/1_setup',
       '/2_initialfile',
@@ -24,6 +25,7 @@ module.exports = {
     '@vuepress/google-analytics': {
       ga: 'UA-127308140-3',
     },
+    'seo': {},
   },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };
