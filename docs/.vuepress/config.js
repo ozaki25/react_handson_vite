@@ -25,7 +25,9 @@ module.exports = {
     '@vuepress/google-analytics': {
       ga: 'UA-127308140-3',
     },
-    'seo': {},
+    'seo': {
+      description: () => 'ハンズオン資料',
+    },
   },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };
