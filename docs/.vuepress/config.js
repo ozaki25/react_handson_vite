@@ -25,9 +25,7 @@ module.exports = {
     '@vuepress/google-analytics': {
       ga: 'UA-127308140-3',
     },
-    'seo': {
-      image: ($page, $site) => `${$site.themeConfig.domain}/icon.png`,
-    },
+    'seo': {},
   },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
 };
