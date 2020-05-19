@@ -26,7 +26,7 @@ module.exports = {
       ga: 'UA-127308140-3',
     },
     'seo': {
-      image: ($page) => `${$site.domain}/logo.png`,
+      image: ($page, $site) => `${$site.domain}/logo.png`,
     },
   },
   head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
