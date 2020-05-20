@@ -186,7 +186,7 @@ export default Router;
 - 最後にリンクの見た目を整える
 - `src/components/Header.js`を修正する
 
-```jsx{4-20,25-26,29,32}
+```jsx{4-21,26-27,30,33}
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
