@@ -198,6 +198,7 @@ const styles = {
     borderColor: '#e70000',
     borderRadius: '2px',
     color: '#e70000',
+    display: 'inline-block',
     margin: '3px',
     padding: '8px',
     textDecoration: 'none'
