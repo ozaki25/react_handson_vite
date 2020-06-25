@@ -20,6 +20,6 @@ jobs:
           yarn build
       - name: deploy
         run: |
-          npx vc --prod -t $VERCEL_TOKEN
+          npx vc --confirm --prod -t $VERCEL_TOKEN
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
