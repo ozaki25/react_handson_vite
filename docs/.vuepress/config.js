@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 module.exports = {
   title: 'ReactHandson',
   // base: '/react_handson/',
@@ -17,6 +19,11 @@ module.exports = {
     lineNumbers: true,
   },
   plugins: {
+    '@vuepress/last-updated': {
+      transformer: (timestamp, lang) => {
+        return dayjs(timestamp).format('YYYY/MM/DD H時m分');
+      },
+    },
     '@vuepress/back-to-top': {},
     '@vuepress/pwa': {
       serviceWorker: true,
@@ -25,7 +32,7 @@ module.exports = {
     '@vuepress/google-analytics': {
       ga: 'UA-127308140-3',
     },
-    'seo': {
+    seo: {
       description: () => 'ハンズオン資料',
     },
   },
