@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: ls
-        run: |
-          ls -la
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -23,6 +20,6 @@ jobs:
           yarn build
       - name: deploy
         run: |
-          npx vc --confirm --prod -t $VERCEL_TOKEN
+          npx vc ./public --confirm --prod -t $VERCEL_TOKEN
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
