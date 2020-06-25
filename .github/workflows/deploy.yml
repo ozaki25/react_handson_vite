@@ -8,9 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: amondnet/vercel-action@v19
+      - name: Use Node.js 14
+        uses: actions/setup-node@latest
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-args: '--prod'
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID}}
+          node-version: 14
+      - name: install
+        run: |
+          yarn install
+      - name: build
+        run: |
+          yarn build
+      - name: deploy
+        run: |
+          npx vc --prod -t $VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
