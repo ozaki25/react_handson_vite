@@ -21,7 +21,7 @@ module.exports = {
   plugins: {
     '@vuepress/last-updated': {
       transformer: (timestamp, lang) => {
-        return dayjs(timestamp).format('YYYY/MM/DD H時m分');
+        return dayjs(timestamp).format('YYYY/MM/DD');
       },
     },
     '@vuepress/back-to-top': {},
