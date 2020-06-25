@@ -14,10 +14,10 @@ jobs:
           vercel-args: '--prod'
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID}}
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - name: Use Node.js 14
+        uses: actions/setup-node@latest
         with:
-          node-version: 12
+          node-version: 14
       - name: install
         run: |
           yarn install
