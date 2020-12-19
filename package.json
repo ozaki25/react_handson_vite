@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "vuepress dev docs",
-    "build": "vuepress build docs --dest public"
+    "start": "vitepress dev docs",
+    "build": "vitepress build docs --dest public"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "@vuepress/plugin-google-analytics": "^1.7.1",
     "@vuepress/plugin-pwa": "^1.7.1",
     "dayjs": "^1.9.7",
+    "vitepress": "^0.9.2",
     "vuepress": "^1.7.1",
     "vuepress-plugin-seo": "^0.1.4"
   }
