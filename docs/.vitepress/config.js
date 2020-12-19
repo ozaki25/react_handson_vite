@@ -1,5 +1,3 @@
-const dayjs = require('dayjs');
-
 module.exports = {
   title: 'ReactHandson',
   // base: '/react_handson/',
