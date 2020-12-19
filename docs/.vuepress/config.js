@@ -4,8 +4,8 @@ module.exports = {
   title: 'ReactHandson',
   // base: '/react_handson/',
   themeConfig: {
-    domain: 'https://react-handson.ozaki25.now.sh',
-    repo: 'ozaki25/react_handson',
+    domain: 'https://react-handson-vite.ozaki25.now.sh',
+    repo: 'ozaki25/react_handson_vite',
     repoLabel: 'GitHub',
     sidebar: [
       '/1_setup',
