@@ -16,6 +16,7 @@ module.exports = {
       { text: '6.ページ遷移編', link: '/6_routing' },
       { text: '7.通信処理編', link: '/7_communication' },
     ],
+    lastUpdated: true,
   },
   markdown: {
     lineNumbers: true,
